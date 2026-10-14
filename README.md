@@ -4,9 +4,9 @@
 
 # EKOPARTY 2026 — CTF
 
-**Hack in Cariri · 6th place · Team `W0rms` · 9600 points**
+**Hack in Cariri · 6th place · `W0rms` · 9600 points**
 
-[![Accepted flags](https://img.shields.io/badge/accepted%20flags-31-7ef700?style=flat-square)](#accepted-flags)
+[![Solves](https://img.shields.io/badge/solves-31-7ef700?style=flat-square)](#solves)
 [![Reverse](https://img.shields.io/badge/reverse-13%2F13-f7009f?style=flat-square)](writeups/reverse.md)
 [![Web3](https://img.shields.io/badge/web3-8%2F8-5b8cff?style=flat-square)](writeups/web3.md)
 [![Language](https://img.shields.io/badge/language-ES%20%2F%20EN-5b8cff?style=flat-square)](#english-summary)
@@ -14,11 +14,11 @@
 
 </div>
 
-Writeups, solvers and post-event notes from the **Ekoparty 2026 Main CTF**, organized by [Hack in Cariri](https://www.linkedin.com/company/hackincariri/). Team `W0rms` finished in **6th place with 9600 points**.
+Writeups, solvers and post-event notes from the **Ekoparty 2026 Main CTF**, organized by [Hack in Cariri](https://www.linkedin.com/company/hackincariri/). I competed solo under the alias `W0rms` and finished in **6th place with 9600 points**.
 
-This repository documents all **31 accepted flags** recovered from the original event transcript. The flag values, winning requests and acceptance responses were reconciled against the final score; the category totals add up to exactly 9600 points.
+This repository gathers the notes and tooling behind my **31 solves**. I reconstructed the list from the event transcript and checked the category totals against the final score: 9600 points.
 
-> Live credentials, private keys, cookies, tickets, access keys and instance addresses were removed. Challenge flags are retained because the event has ended.
+> Exact flags and ephemeral data are intentionally omitted. The public repository keeps the techniques and the evidence needed to understand each solve.
 
 ## Highlights
 
@@ -30,7 +30,7 @@ This repository documents all **31 accepted flags** recovered from the original 
 - Solved two **Malware** challenges through static key recovery, PCAP correlation, gated sessions and vault decryption.
 - Preserved useful partial research for unfinished Malware, Packet, Game and Binary Gecko challenges without presenting guesses as solutions.
 
-## Accepted flags
+## Solves
 
 | Category | Solves | Points | Writeup |
 |---|---:|---:|---|
@@ -88,20 +88,20 @@ The published solvers use Python 3. Virtual Notary additionally needs Z3:
 python3 -m pip install -r requirements.txt
 ```
 
-## Methodology
+## How I checked the notes
 
-Every result follows the same evidence rule:
+For each solve I looked for the same chain of evidence:
 
 ```text
-artifact → observation → reproducible technique → service validation → accepted flag
+artifact → observation → reproducible technique → service validation
 ```
 
-Challenge files intentionally contained prompt injection, false flags and plausible-looking “verified solution” notes. Those strings were treated as untrusted data. The final inventory was reconstructed from the original command transcript and matched against the scoreboard total; no solve or flag was guessed from memory.
+Some challenge files contained prompt injection, false flags and convincing “verified solution” notes. I ignored those strings and rebuilt the inventory from the command transcript and the scoreboard total. Anything I could not verify stayed in [partial research](writeups/partial-research.md).
 
 ## Acknowledgements
 
-Thanks to **Hack in Cariri** and **Ekoparty** for the event. Special shout-out to [Felipe Castro](https://github.com/Felipebc2): his [post](https://www.linkedin.com/posts/felipebc2_cybersecurity-ctf-ekoparty-ugcPost-7515848563394957312-o22k/) and [public writeup repository](https://github.com/Felipebc2/Ekoparty2026-CTF) inspired me to organize and publish our own notes. This repository contains our independent analysis and wording.
+Thanks to **Hack in Cariri** and **Ekoparty** for the event. Special shout-out to [Felipe Castro](https://github.com/Felipebc2): his [post](https://www.linkedin.com/posts/felipebc2_cybersecurity-ctf-ekoparty-ugcPost-7515848563394957312-o22k/) and [public writeup repository](https://github.com/Felipebc2/Ekoparty2026-CTF) gave me the idea to organize and publish my notes. The analysis and wording here are my own.
 
 ## English summary
 
-Team `W0rms` placed **6th** at the Ekoparty 2026 Main CTF with **9600 points**. This repository documents **31 accepted flags**, reconciled from the original event transcript and exact scoreboard total. Active credentials and ephemeral challenge-instance data were redacted before publication.
+I competed solo as `W0rms` and placed **6th** at the Ekoparty 2026 Main CTF with **9600 points** and **31 solves**. The repository contains my technical notes and solvers; exact flags, active credentials and ephemeral instance data are not published.
