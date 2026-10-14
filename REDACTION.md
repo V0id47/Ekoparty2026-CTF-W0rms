@@ -22,5 +22,4 @@ Placeholders such as `<HOST>`, `<PORT>`, `<RPC>`, `<COOKIE>` and `<PRIVATE_KEY>`
 
 ## Accuracy
 
-A challenge is marked solved only when a flag was returned by the service or accepted by the platform. Team solves whose exact evidence was not retained are not counted among the 19 documented solutions.
-
+A challenge is marked solved only when an accepted flag was retained, an independently verifiable solved state survived, or the final authenticated platform state confirmed the team solve. The public inventory separates the 19 exact flags retained from 10 additional platform-confirmed solves whose missing values are never reconstructed.
