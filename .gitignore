@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pcap
+*.pcapng
+*.raw
+*.bin
+*.exe
+*.zip
+*.tar.gz
+.env
+secrets.*
+credentials.*
+
