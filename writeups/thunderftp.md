@@ -2,7 +2,6 @@
 
 - **Category:** Pwn / Binary
 - **Status:** solved locally and remotely
-- **Flag:** `HIK_THUNDERFTP_19be46da77489ab2b6b175b541634dd9`
 - **Binary SHA-256:** `4f7fc518edf99dcaee52942b53da82868849224a9b9e321969e769c4263f8d73`
 - **Solver:** [`../solvers/thunderftp.py`](../solvers/thunderftp.py)
 

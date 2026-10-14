@@ -2,7 +2,6 @@
 
 - **Category:** Binary Exploitation
 - **Points:** 400
-- **Flag:** `HIK_BINEXP_ARE_COOL_713207f728524b71769fcc6323d07a82`
 
 The service was an HTTP image API backed by QuickJS-ng. Every TCP connection owned an independent native session, so the complete exploit had to remain on one keep-alive connection.
 
@@ -30,6 +29,4 @@ cat<flag.txt>&4;#
 
 Writing to the existing socket placed the flag immediately before the service's normal HTTP error response.
 
-## Takeaway
-
-Language-level memory safety does not protect native handles. Any cache or “recent objects” list must remove references atomically when the underlying allocation is freed, and debug patch primitives must never be exposed to untrusted clients.
+The exploitable state lived below JavaScript: `/api/recent` kept a native pointer after deletion, and the debug patch endpoint made the reclaimed object writable. Keeping the whole sequence on one HTTP connection was the detail that made the exploit reliable.
