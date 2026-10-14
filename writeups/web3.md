@@ -34,7 +34,21 @@ The intended ownership flow had three stages, but nomination lacked access contr
 
 The final owner's lowercase address without `0x` was the proof.
 
+## Guest List
+
+- **Points:** 250
+- **Status:** solved on-chain and confirmed by the final platform state; exact flag not retained.
+
+The wallet used `tx.origin` as an authorization boundary. An owner-visit endpoint caused the owner EOA to call a contract chosen by the player. The exploit contract used that callback to register itself as a guest and release the funds during the same transaction.
+
+The first version ignored low-level call results, which allowed gas estimation to under-allocate and left state unchanged. Reverting on either failed call forced estimation to account for the storage writes. The resulting transaction drained the wallet and made `Setup.isSolved()` return `true`.
+
+Instance addresses, the player private key, cookie, RPC endpoint and transaction identifiers were removed from this public version.
+
+## Other platform-confirmed solves
+
+Night Deposit, Voucher Window, Maintenance Hatch and the late-added Assembly Floor also appeared solved in the final authenticated event state. Their winning transactions and exact flags were not retained, so no technical path is reconstructed here. See [Team solves](team-solves.md#web3).
+
 ## Takeaway
 
-Neither Solidity `private` storage nor multi-step ownership workflows create a security boundary. Storage is public, and every transition needs authorization—not just the final privileged action.
-
+Neither Solidity `private` storage, multi-step ownership workflows nor `tx.origin` create a security boundary. Storage is public, every transition needs authorization, and contract callers must be authenticated with `msg.sender` plus explicit trust rules.
