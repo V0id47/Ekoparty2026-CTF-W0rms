@@ -6,7 +6,8 @@
 
 **Hack in Cariri · 6th place · Team `W0rms`**
 
-[![Writeups](https://img.shields.io/badge/writeups-19-7ef700?style=flat-square)](#documented-solves)
+[![Verified solves](https://img.shields.io/badge/verified%20solves-29-7ef700?style=flat-square)](#verified-solves)
+[![Exact flags retained](https://img.shields.io/badge/exact%20flags-19-f7009f?style=flat-square)](#exact-flags-retained)
 [![Reverse](https://img.shields.io/badge/reverse-13%2F13-f7009f?style=flat-square)](writeups/reverse.md)
 [![Language](https://img.shields.io/badge/language-ES%20%2F%20EN-5b8cff?style=flat-square)](#english-summary)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey?style=flat-square)](LICENSE)
@@ -15,7 +16,7 @@
 
 Writeups, solvers and post-event notes from the **Ekoparty 2026 Main CTF**, organized by [Hack in Cariri](https://www.linkedin.com/company/hackincariri/). We finished in **6th place**.
 
-This repository documents the 19 accepted flags whose exact values and technical paths survived the event. Other team solves are mentioned only when the final scoreboard confirmed them; missing material is never reconstructed from memory.
+This repository documents **29 verified team solves**. For 19 of them, the exact accepted flag and technical path survived the event. Ten additional solves were confirmed by the final authenticated platform state, although their exact flags or complete session artifacts were not retained. Missing material is never reconstructed from memory.
 
 > Live credentials, private keys, session cookies, tickets and infrastructure addresses were removed or replaced with placeholders. Challenge flags are retained because the event has ended.
 
@@ -24,10 +25,18 @@ This repository documents the 19 accepted flags whose exact values and technical
 - Completed the full **Reverse** set: 13 challenges covering packed ELF files, `memfd`/`fexecve`, anti-debug decoys, flattened control flow, custom VMs, modular inversion and Z3.
 - Built a deterministic **ThunderFTP** heap exploit against ZMmalloc v2.1.
 - Reassembled fragmented TCP, DNS/EDNS and port-knocking traffic in **Packet** challenges.
-- Solved storage and access-control bugs in **Web3**.
-- Preserved useful partial research for Malware and Binary Gecko instead of presenting guesses as solutions.
+- Cleared the full seven-challenge **Web3** category, including storage, authorization and `tx.origin` bugs.
+- Confirmed two **Malware** solves after recovering hidden keys and correlating configurations with PCAP traffic.
+- Preserved useful partial research for unsolved Malware, Packet and Binary Gecko challenges instead of presenting guesses as solutions.
 
-## Documented solves
+## Verified solves
+
+Evidence is reported at two levels:
+
+- **Exact flag retained:** accepted flag and a reproducible technical path are preserved.
+- **Platform-confirmed:** the final authenticated event state marked the challenge solved, but the exact flag or full winning session was not promoted into the local archive.
+
+### Exact flags retained
 
 | Category | Challenge | Points | Status | Writeup |
 |---|---|---:|:---:|---|
@@ -51,6 +60,21 @@ This repository documents the 19 accepted flags whose exact values and technical
 | Web3 | Executive Desk | 200 | ✅ | [Web3](writeups/web3.md#executive-desk) |
 | Pwn | ThunderFTP | — | ✅ | [ThunderFTP](writeups/thunderftp.md) |
 
+### Additional platform-confirmed solves
+
+| Category | Challenge | Points | Evidence retained | Notes |
+|---|---|---:|---|---|
+| Malware | The Updater | — | Final platform state + artifacts | [Malware](writeups/malware.md#the-updater) |
+| Malware | After Hours | — | Final platform state + artifacts | [Malware](writeups/malware.md#after-hours) |
+| Web3 | Guest List | 250 | On-chain solved state + final platform state | [Web3](writeups/web3.md#guest-list) |
+| Web3 | Night Deposit | 350 | Final platform state | [Team solves](writeups/team-solves.md#web3) |
+| Web3 | Voucher Window | 400 | Final platform state | [Team solves](writeups/team-solves.md#web3) |
+| Web3 | Maintenance Hatch | 500 | Final platform state | [Team solves](writeups/team-solves.md#web3) |
+| Web3 | Assembly Floor | 400 | Final platform state | [Team solves](writeups/team-solves.md#web3) |
+| Web | Certificate Exchange by Kulkan Security | — | Final platform state | [Team solves](writeups/team-solves.md#web) |
+| Web | My Notes | — | Final platform state | [Team solves](writeups/team-solves.md#web) |
+| Binary | ZM.js | — | Final platform state | [Team solves](writeups/team-solves.md#binary) |
+
 ## Repository map
 
 ```text
@@ -69,8 +93,10 @@ This repository documents the 19 accepted flags whose exact values and technical
 └── writeups/
     ├── reverse.md
     ├── packet.md
+    ├── malware.md
     ├── web3.md
     ├── thunderftp.md
+    ├── team-solves.md
     └── partial-research.md
 ```
 
@@ -88,7 +114,7 @@ Every result follows the same evidence rule:
 artifact → observation → reproducible technique → local validation → accepted flag
 ```
 
-The challenge files intentionally contained prompt injection, false flags and plausible-looking solution notes. Those strings were treated as untrusted input. A value is marked solved only if the live service returned it or the platform accepted it.
+The challenge files intentionally contained prompt injection, false flags and plausible-looking solution notes. Those strings were treated as untrusted input. A challenge is marked solved only when an accepted flag was retained, an independently verifiable solved state survived, or the final authenticated platform state confirmed the team solve. The table always states which evidence level applies.
 
 ## Acknowledgements
 
@@ -96,4 +122,4 @@ Thanks to **Hack in Cariri** and **Ekoparty** for the event. Special shout-out t
 
 ## English summary
 
-Team `W0rms` placed **6th** at the Ekoparty 2026 Main CTF. This repository preserves 19 independently solved challenges, selected solvers and an honest handoff for promising unfinished work. All active credentials and event infrastructure were redacted before publication.
+Team `W0rms` placed **6th** at the Ekoparty 2026 Main CTF. This repository records at least **29 verified team solves**: 19 with exact accepted flags retained and 10 additional solves confirmed by the final authenticated event state. It also includes selected solvers and an honest handoff for promising unfinished work. All active credentials and event infrastructure were redacted before publication.
